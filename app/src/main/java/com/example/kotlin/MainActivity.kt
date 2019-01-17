@@ -2,22 +2,22 @@ package com.example.kotlin
 
 import android.app.AlertDialog
 import android.app.ProgressDialog
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
-
 class MainActivity : AppCompatActivity() {
     var pgdialog: ProgressDialog? = null
     val toasttest = {msg:String -> Toast.makeText(this,msg,Toast.LENGTH_SHORT).show()}
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         btnMenuProgressDialog.setOnClickListener { ProgressDialog() }
         btnMenuSwipreRefresh.setOnClickListener { SwipreRefreshActive() }
         btnMenuAlertDialog.setOnClickListener { AlertDialogFunc() }
+        btnMenuIntent.setOnClickListener { IntentFunc() }
 
         // this is event when component swipe refresh on swipe down but now can't to use
         swipeRefreshLayout.setOnRefreshListener { SwipreRefreshActive() }
@@ -52,6 +52,21 @@ class MainActivity : AppCompatActivity() {
         }
         val dialog: AlertDialog = builder.create()
         dialog.show()
+    }
+
+    private fun IntentFunc(){
+        //this is function for open to secondaactivity with sending parameters
+        val intent = Intent(this,SecondActivity::class.java)
+        intent.putExtra("dataInteger",1)
+        intent.putExtra("dataString","ganda")
+        startActivity(intent)
+
+        //this is function for lunch to secondactivity without sending parameters
+        /*val intent = Intent(this,SecondActivity::class.java)
+        startActivity(intent)*/
+
+        //this is function for lunch to secondactivity without sending parameters easily
+        /*startActivity(Intent(this,SecondActivity::class.java))*/
     }
 }
 
