@@ -44,6 +44,10 @@
                         android:text="Listview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:id="@+id/btnMenuListview"/>
+                <Button
+                        android:text="Database"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/btnMenuDatabase"/>
             </LinearLayout>
         </android.support.v4.widget.SwipeRefreshLayout>
     </android.support.v4.widget.NestedScrollView>
