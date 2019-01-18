@@ -19,8 +19,8 @@ class DatabaseActivity : AppCompatActivity() {
         btnAdd.setOnClickListener { AddData() }
 
         val mMessageClickedHandler = AdapterView.OnItemClickListener { parent, v, position, id ->
-            DeleteData(dataid[position])
             toasttest("\""+dataname[position]+"\" deleted", this)
+            DeleteData(dataid[position])
         }
         listviewDatabase.onItemClickListener = mMessageClickedHandler
     }
