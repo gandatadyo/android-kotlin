@@ -1,16 +1,20 @@
 package com.example.kotlin
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.widget.Toast
+import android.view.Menu
+import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
+
+
 class MainActivity : AppCompatActivity() {
     var pgdialog: ProgressDialog? = null
-    val toasttest = {msg:String -> Toast.makeText(this,msg,Toast.LENGTH_SHORT).show()}
+    val idresult_secondactivity = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -18,9 +22,33 @@ class MainActivity : AppCompatActivity() {
         btnMenuSwipreRefresh.setOnClickListener { SwipreRefreshActive() }
         btnMenuAlertDialog.setOnClickListener { AlertDialogFunc() }
         btnMenuIntent.setOnClickListener { IntentFunc() }
+        btnMenuPicasso.setOnClickListener { startActivity(Intent(this,PicassoActivity::class.java)) }
+        btnMenuListview.setOnClickListener { startActivity(Intent(this,ListviewActivity::class.java)) }
 
         // this is event when component swipe refresh on swipe down but now can't to use
         swipeRefreshLayout.setOnRefreshListener { SwipreRefreshActive() }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menucustom, menu) //your file name
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        return when (item.itemId) {
+            R.id.btnMenuAction1 -> {
+                toasttest("Action 1",this)
+                true
+            }
+
+            R.id.btnMenuAction2 ->{
+                toasttest("Action 2",this)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun ProgressDialog(){
@@ -35,7 +63,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun SwipreRefreshActive(){
         swipeRefreshLayout.isRefreshing = true
-        toasttest("hallo swipe")
+        toasttest("hallo swipe",this)
         Run.after(1000) {swipeRefreshLayout.isRefreshing = false}
     }
 
@@ -45,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         builder.setCancelable(false)
         builder.setPositiveButton("Yes") { dialog, which ->
             dialog.dismiss()
-            toasttest("hallo alert")
+            toasttest("hallo alert",this)
         }
         builder.setNegativeButton("No") { dialog, which ->
             dialog.dismiss()
@@ -55,11 +83,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun IntentFunc(){
-        //this is function for open to secondaactivity with sending parameters
+        //this is function for open to secondactivity with sending parameters
         val intent = Intent(this,SecondActivity::class.java)
         intent.putExtra("dataInteger",1)
         intent.putExtra("dataString","ganda")
-        startActivity(intent)
+        startActivityForResult(intent,idresult_secondactivity)
 
         //this is function for lunch to secondactivity without sending parameters
         /*val intent = Intent(this,SecondActivity::class.java)
@@ -68,15 +96,21 @@ class MainActivity : AppCompatActivity() {
         //this is function for lunch to secondactivity without sending parameters easily
         /*startActivity(Intent(this,SecondActivity::class.java))*/
     }
-}
 
-class Run {
-    companion object {
-        // this is function use style lambda
-        fun after(delay: Long, process: () -> Unit) {
-            Handler().postDelayed({
-                process()
-            }, delay)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode==idresult_secondactivity){
+            if(resultCode==Activity.RESULT_OK) {
+                if (data != null) {
+                    val data_id = data.getIntExtra("id", 0).toString()
+                    val data_nama = data.getStringExtra("nama")
+                    toasttest("ID : $data_id ,Nama : $data_nama", this)
+                }
+            }
+        }else{
+            toasttest("No result",this)
         }
     }
 }
+
+

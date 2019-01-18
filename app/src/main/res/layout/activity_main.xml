@@ -36,6 +36,14 @@
                         android:text="Intent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:id="@+id/btnMenuIntent"/>
+                <Button
+                        android:text="Picasso"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/btnMenuPicasso"/>
+                <Button
+                        android:text="Listview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/btnMenuListview"/>
             </LinearLayout>
         </android.support.v4.widget.SwipeRefreshLayout>
     </android.support.v4.widget.NestedScrollView>

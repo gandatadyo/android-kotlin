@@ -15,4 +15,8 @@
             android:text="Data :"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/lblData2" android:layout_margin="5dp"/>
+    <Button
+            android:text="close and passing result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/btnResult"/>
 </LinearLayout>

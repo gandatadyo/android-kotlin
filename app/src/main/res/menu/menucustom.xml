@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Action 1" android:id="@+id/btnMenuAction1"/>
+    <item android:title="Action 2" android:id="@+id/btnMenuAction2"/>
+</menu>
