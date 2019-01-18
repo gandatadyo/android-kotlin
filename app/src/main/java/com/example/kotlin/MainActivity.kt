@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         btnMenuListview.setOnClickListener { startActivity(Intent(this,ListviewActivity::class.java)) }
         btnMenuDatabase.setOnClickListener { startActivity(Intent(this,DatabaseActivity::class.java)) }
         btnMenuImageCropper.setOnClickListener { startActivity(Intent(this,ImageCropperActivity::class.java)) }
+        btnMenuRecylerviewr.setOnClickListener { startActivity(Intent(this,RecylerViewActivity::class.java)) }
 
         // this is event when component swipe refresh on swipe down but now can't to use
         swipeRefreshLayout.setOnRefreshListener { SwipreRefreshActive() }

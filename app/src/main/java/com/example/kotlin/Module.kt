@@ -22,6 +22,15 @@ class Run {
     }
 }
 
+class dataschemarecycler{
+    var nama =""
+    var telp =""
+    constructor(nama:String,telp:String){
+        this.nama=nama
+        this.telp=telp
+    }
+}
+
 fun saveImageToInternalMemory(finalBitmap: Bitmap):String {
     var imagePath: String? = ""
     val root = Environment.getExternalStorageDirectory().toString()
