@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.activity_database.*
-import kotlinx.android.synthetic.main.activity_listview.*
 
 class DatabaseActivity : AppCompatActivity() {
     private val db = DataBaseHandler(this)
@@ -16,11 +15,15 @@ class DatabaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_database)
-        btnAdd.setOnClickListener { AddData() }
+        btnAdd.setOnClickListener {
+            if((edtNama.text.toString() != "")&&(edtNomer.text.toString() != ""))
+                AddData() else
+                toasttest("Data must be filled",this)
+        }
 
         val mMessageClickedHandler = AdapterView.OnItemClickListener { parent, v, position, id ->
-            toasttest("\""+dataname[position]+"\" deleted", this)
-            DeleteData(dataid[position])
+                toasttest("\"" + dataname[position] + "\" deleted", this)
+                DeleteData(dataid[position])
         }
         listviewDatabase.onItemClickListener = mMessageClickedHandler
     }

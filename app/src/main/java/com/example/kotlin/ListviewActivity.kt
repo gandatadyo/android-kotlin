@@ -2,15 +2,9 @@ package com.example.kotlin
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import kotlinx.android.synthetic.main.activity_listview.*
 import android.widget.ArrayAdapter
-import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
-
-
-
-
 
 class ListviewActivity : AppCompatActivity() {
 
