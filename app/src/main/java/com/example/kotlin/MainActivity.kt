@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         btnMenuProgressDialog.setOnClickListener { ProgressDialog() }
-        btnMenuSwipreRefresh.setOnClickListener { SwipreRefreshActive() }
         btnMenuAlertDialog.setOnClickListener { AlertDialogFunc() }
         btnMenuIntent.setOnClickListener { IntentFunc() }
         btnMenuPicasso.setOnClickListener { startActivity(Intent(this,PicassoActivity::class.java)) }
@@ -31,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         btnMenuSharedPreference.setOnClickListener { startActivity(Intent(this,SharedPreferenceActivity::class.java)) }
 
         // this is event when component swipe refresh on swipe down but now can't to use
-        swipeRefreshLayout.setOnRefreshListener { SwipreRefreshActive() }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -64,12 +62,6 @@ class MainActivity : AppCompatActivity() {
         pgdialog?.isIndeterminate=true
         pgdialog?.show()
         Run.after(1000) {pgdialog?.dismiss()}
-    }
-
-    private fun SwipreRefreshActive(){
-        swipeRefreshLayout.isRefreshing = true
-        toasttest("hallo swipe",this)
-        Run.after(1000) {swipeRefreshLayout.isRefreshing = false}
     }
 
     private fun AlertDialogFunc(){

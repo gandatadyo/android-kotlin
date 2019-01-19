@@ -18,7 +18,7 @@ class PicassoActivity : AppCompatActivity() {
             Run.after(1000) {
                 var surl = "http://i.imgur.com/DvpvklR.png"
                 toasttest(surl,this)
-                Picasso.get().load(surl).placeholder(R.drawable.ic_launcher_foreground).error(R.drawable.ic_launcher_background).into(imgPicasso)
+                Picasso.get().load(surl).into(imgPicasso)
             }
         }
     }

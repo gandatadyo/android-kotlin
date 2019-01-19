@@ -34,7 +34,7 @@ class dataschemarecycler{
 fun saveImageToInternalMemory(finalBitmap: Bitmap):String {
     var imagePath: String? = ""
     val root = Environment.getExternalStorageDirectory().toString()
-    val myDir = File(root + "/Notaris")
+    val myDir = File(root + "/ModuleKotlin")
     myDir.mkdirs()
     val generator = Random()
     var n = 10000

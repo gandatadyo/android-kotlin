@@ -12,6 +12,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/btnImageCopper"/>
 
+    <Button
+            android:text="Save to internal memory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/btnImageSave"/>
     <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent" tools:srcCompat="@tools:sample/avatars[0]"

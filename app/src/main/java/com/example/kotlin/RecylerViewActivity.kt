@@ -9,19 +9,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_recyler_view.*
 
 class RecylerViewActivity : AppCompatActivity() {
+    var mydata = arrayListOf<dataschemarecycler>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recyler_view)
-        val mydata = arrayListOf<dataschemarecycler>()
+        recylerview.layoutManager = GridLayoutManager(this, 1)
+        swipeRefreshLayout.setOnRefreshListener { ShowData() }
+        ShowData()
+    }
+
+    private fun ShowData(){
+        swipeRefreshLayout.isRefreshing = true
         mydata.add(dataschemarecycler("ganda","082264576766"))
         mydata.add(dataschemarecycler("dinda","085647080809"))
-
-        recylerview.layoutManager = GridLayoutManager(this, 1)
         recylerview.adapter = RecylerAdapter(mydata, this)
+        Run.after(1000) {swipeRefreshLayout.isRefreshing = false}
     }
 
     class RecylerAdapter(private val dataList: ArrayList<dataschemarecycler>, val context: Context) : RecyclerView.Adapter<RecylerAdapter.ViewHolder>() {

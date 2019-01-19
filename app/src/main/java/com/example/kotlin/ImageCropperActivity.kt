@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.widget.Toast
 import com.theartofdev.edmodo.cropper.CropImage
@@ -22,6 +23,16 @@ class ImageCropperActivity : AppCompatActivity() {
 
         btnImageCopper.setOnClickListener {
             CropImage.startPickImageActivity(this)
+        }
+
+        btnImageSave.setOnClickListener {
+            if(imgCropper.drawable!=null){
+                val bitmap = (imgCropper.drawable as BitmapDrawable).bitmap
+                val urlimage = saveImageToInternalMemory(bitmap)
+                toasttest("Image Save to \"$urlimage\"", this)
+            }else{
+                toasttest("Bitmap not valid", this)
+            }
         }
     }
 
