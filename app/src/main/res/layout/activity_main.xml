@@ -56,6 +56,18 @@
                         android:text="Shared Preference"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:id="@+id/btnMenuSharedPreference"/>
+                <Button
+                    android:text="Anko"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/btnMenuAnko"/>
+                <Button
+                        android:text="Tab Pagger"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/btnMenuTab"/>
+                <Button
+                        android:text="Notification (Only Android 0reo)"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/btnMenuNotification"/>
             </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </LinearLayout>
