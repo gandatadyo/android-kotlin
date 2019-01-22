@@ -7,12 +7,16 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
+import android.util.Base64
 import android.widget.Toast
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import kotlinx.android.synthetic.main.activity_image_cropper.*
+import java.io.ByteArrayOutputStream
 
 class ImageCropperActivity : AppCompatActivity() {
     private var cropImageUri: Uri? = null
@@ -30,6 +34,16 @@ class ImageCropperActivity : AppCompatActivity() {
                 val bitmap = (imgCropper.drawable as BitmapDrawable).bitmap
                 val urlimage = saveImageToInternalMemory(bitmap)
                 toasttest("Image Save to \"$urlimage\"", this)
+            }else{
+                toasttest("Bitmap not valid", this)
+            }
+        }
+
+        btnImageBase64.setOnClickListener {
+            if(imgCropper.drawable!=null){
+                val bitmap = (imgCropper.drawable as BitmapDrawable).bitmap
+                val stringimageconvert = ConverToBase64(bitmap)
+                Toast.makeText(this,stringimageconvert,Toast.LENGTH_LONG).show()
             }else{
                 toasttest("Bitmap not valid", this)
             }
@@ -80,5 +94,18 @@ class ImageCropperActivity : AppCompatActivity() {
             .setGuidelines(CropImageView.Guidelines.ON)
             .setMultiTouchEnabled(true)
             .start(this)
+    }
+
+    private fun ConverToBase64(bmp:Bitmap):String{
+        var encodedImage = ""
+        val baos = ByteArrayOutputStream()
+        try {
+            bmp.compress(Bitmap.CompressFormat.JPEG, 10, baos)
+            val imageBytes = baos.toByteArray()
+            encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT)
+        } catch (e: Exception) {
+            Toast.makeText(this, "Error convert image", Toast.LENGTH_SHORT).show()
+        }
+        return encodedImage
     }
 }

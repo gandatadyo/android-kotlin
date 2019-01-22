@@ -68,6 +68,14 @@
                         android:text="Notification (Only Android 0reo)"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:id="@+id/btnMenuNotification"/>
+                <Button
+                        android:text="File Manager"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/btnMenuFileManager"/>
+                <Button
+                        android:text="Alert Dialog Type List"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/btnMenuAlertDialogList"/>
             </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

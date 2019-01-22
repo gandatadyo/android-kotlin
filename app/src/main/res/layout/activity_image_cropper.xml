@@ -16,6 +16,10 @@
             android:text="Save to internal memory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/btnImageSave"/>
+    <Button
+            android:text="Convert Base 64"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/btnImageBase64"/>
     <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent" tools:srcCompat="@tools:sample/avatars[0]"

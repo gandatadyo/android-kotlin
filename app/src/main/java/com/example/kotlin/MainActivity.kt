@@ -13,8 +13,7 @@ import android.os.Build
 import android.support.v4.app.NotificationCompat
 import android.support.v4.app.NotificationManagerCompat
 import android.app.PendingIntent
-
-
+import android.widget.Toast
 
 
 class MainActivity : AppCompatActivity() {
@@ -37,6 +36,8 @@ class MainActivity : AppCompatActivity() {
         btnMenuAnko.setOnClickListener { startActivity(Intent(this,AnkoActivity::class.java)) }
         btnMenuTab.setOnClickListener { startActivity(Intent(this,TabActivity::class.java)) }
         btnMenuNotification.setOnClickListener { NotificationFunc() }
+        btnMenuFileManager.setOnClickListener { startActivity(Intent(this,FileManagerActivity::class.java)) }
+        btnMenuAlertDialogList.setOnClickListener { AlertDialogListFunc() }
 
         // this is event when component swipe refresh on swipe down but now can't to use
     }
@@ -110,8 +111,7 @@ class MainActivity : AppCompatActivity() {
             .setSmallIcon(R.drawable.notification_icon_background)
             .setContentTitle("My notification")
             .setContentText("Much longer text that cannot fit one line...")
-            .setStyle(NotificationCompat.BigTextStyle()
-                .bigText("Much longer text that cannot fit one line..."))
+            .setStyle(NotificationCompat.BigTextStyle().bigText("Much longer text that cannot fit one line..."))
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
 
@@ -150,6 +150,19 @@ class MainActivity : AppCompatActivity() {
             // notificationId is a unique int for each notification that you must define
             val notificationId = 1234
             notify(notificationId, mBuilder.build())
+        }
+    }
+
+    private fun AlertDialogListFunc(){
+        val items = arrayOf("Red", "Orange", "Yellow", "Blue")
+        val builder = AlertDialog.Builder(this)
+        with(builder)
+        {
+            setTitle("List of Items")
+            setItems(items) { dialog, which ->
+                Toast.makeText(applicationContext, items[which] + " is clicked", Toast.LENGTH_SHORT).show()
+            }
+            show()
         }
     }
 
