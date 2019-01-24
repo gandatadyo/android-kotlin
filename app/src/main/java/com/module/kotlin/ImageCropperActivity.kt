@@ -1,4 +1,4 @@
-package com.example.kotlin
+package com.module.kotlin
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -8,11 +8,11 @@ import android.os.Bundle
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.util.Base64
 import android.widget.Toast
+import com.module.kotlin.R
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import kotlinx.android.synthetic.main.activity_image_cropper.*

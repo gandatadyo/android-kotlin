@@ -1,4 +1,4 @@
-package com.example.kotlin
+package com.module.kotlin
 
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import kotlinx.android.synthetic.main.activity_main.*
+import com.module.kotlin.R
 import kotlinx.android.synthetic.main.activity_recyler_view.*
 
 class RecylerViewActivity : AppCompatActivity() {
@@ -25,15 +25,21 @@ class RecylerViewActivity : AppCompatActivity() {
 
     private fun ShowData(){
         swipeRefreshLayout.isRefreshing = true
-        mydata.add(dataschemarecycler("ganda","082264576766"))
-        mydata.add(dataschemarecycler("dinda","085647080809"))
+        mydata.add(dataschemarecycler("ganda", "082264576766"))
+        mydata.add(dataschemarecycler("dinda", "085647080809"))
         recylerview.adapter = RecylerAdapter(mydata, this)
-        Run.after(1000) {swipeRefreshLayout.isRefreshing = false}
+        Run.after(1000) { swipeRefreshLayout.isRefreshing = false }
     }
 
     class RecylerAdapter(private val dataList: ArrayList<dataschemarecycler>, val context: Context) : RecyclerView.Adapter<RecylerAdapter.ViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            return ViewHolder(LayoutInflater.from(context).inflate(R.layout.card_recyler, parent, false))
+            return ViewHolder(
+                LayoutInflater.from(context).inflate(
+                    R.layout.card_recyler,
+                    parent,
+                    false
+                )
+            )
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -49,7 +55,7 @@ class RecylerViewActivity : AppCompatActivity() {
                 lblitem1.text = dataitem.nama
                 lblitem2.text = dataitem.telp
                 itemView.setOnClickListener {
-                    toasttest("Nama : "+dataitem.nama,context)
+                    toasttest("Nama : " + dataitem.nama, context)
                 }
             }
         }

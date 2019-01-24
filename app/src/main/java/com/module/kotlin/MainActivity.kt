@@ -1,4 +1,4 @@
-package com.example.kotlin
+package com.module.kotlin
 
 import android.app.*
 import android.content.Context
@@ -14,6 +14,7 @@ import android.support.v4.app.NotificationCompat
 import android.support.v4.app.NotificationManagerCompat
 import android.app.PendingIntent
 import android.widget.Toast
+import com.module.kotlin.R
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,18 +27,18 @@ class MainActivity : AppCompatActivity() {
         btnMenuProgressDialog.setOnClickListener { ProgressDialog() }
         btnMenuAlertDialog.setOnClickListener { AlertDialogFunc() }
         btnMenuIntent.setOnClickListener { IntentFunc() }
-        btnMenuPicasso.setOnClickListener { startActivity(Intent(this,PicassoActivity::class.java)) }
-        btnMenuListview.setOnClickListener { startActivity(Intent(this,ListviewActivity::class.java)) }
-        btnMenuDatabase.setOnClickListener { startActivity(Intent(this,DatabaseActivity::class.java)) }
-        btnMenuImageCropper.setOnClickListener { startActivity(Intent(this,ImageCropperActivity::class.java)) }
-        btnMenuRecylerviewr.setOnClickListener { startActivity(Intent(this,RecylerViewActivity::class.java)) }
-        btnMenuVolley.setOnClickListener { startActivity(Intent(this,VolleyActivity::class.java)) }
+        btnMenuPicasso.setOnClickListener { startActivity(Intent(this, PicassoActivity::class.java)) }
+        btnMenuListview.setOnClickListener { startActivity(Intent(this, ListviewActivity::class.java)) }
+        btnMenuDatabase.setOnClickListener { startActivity(Intent(this, DatabaseActivity::class.java)) }
+        btnMenuImageCropper.setOnClickListener { startActivity(Intent(this, ImageCropperActivity::class.java)) }
+        btnMenuRecylerviewr.setOnClickListener { startActivity(Intent(this, RecylerViewActivity::class.java)) }
+        btnMenuVolley.setOnClickListener { startActivity(Intent(this, VolleyActivity::class.java)) }
         btnMenuSharedPreference.setOnClickListener { startActivity(Intent(this,SharedPreferenceActivity::class.java)) }
-        btnMenuAnko.setOnClickListener { startActivity(Intent(this,AnkoActivity::class.java)) }
-        btnMenuTab.setOnClickListener { startActivity(Intent(this,TabActivity::class.java)) }
+        btnMenuAnko.setOnClickListener { startActivity(Intent(this, AnkoActivity::class.java)) }
+        btnMenuTab.setOnClickListener { startActivity(Intent(this, TabActivity::class.java)) }
         btnMenuNotification.setOnClickListener { NotificationFunc() }
-        btnMenuFileManager.setOnClickListener { startActivity(Intent(this,FileManagerActivity::class.java)) }
-        btnMenuAlertDialogList.setOnClickListener { AlertDialogListFunc() }
+        btnMenuFileManager.setOnClickListener { startActivity(Intent(this, FileManagerActivity::class.java)) }
+        btnMenuNavigationDrawer.setOnClickListener {  startActivity(Intent(this, NavigationDrawerActivity::class.java)) }
 
         // this is event when component swipe refresh on swipe down but now can't to use
     }
@@ -52,12 +53,12 @@ class MainActivity : AppCompatActivity() {
 
         return when (item.itemId) {
             R.id.btnMenuAction1 -> {
-                toasttest("Action 1",this)
+                toasttest("Action 1", this)
                 true
             }
 
             R.id.btnMenuAction2 ->{
-                toasttest("Action 2",this)
+                toasttest("Action 2", this)
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -71,7 +72,7 @@ class MainActivity : AppCompatActivity() {
         pgdialog?.setCancelable(false)
         pgdialog?.isIndeterminate=true
         pgdialog?.show()
-        Run.after(1000) {pgdialog?.dismiss()}
+        Run.after(1000) { pgdialog?.dismiss() }
     }
 
     private fun AlertDialogFunc(){
@@ -80,7 +81,7 @@ class MainActivity : AppCompatActivity() {
         builder.setCancelable(false)
         builder.setPositiveButton("Yes") { dialog, which ->
             dialog.dismiss()
-            toasttest("hallo alert",this)
+            toasttest("hallo alert", this)
         }
         builder.setNegativeButton("No") { dialog, which ->
             dialog.dismiss()
@@ -91,7 +92,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun IntentFunc(){
         //this is function for open to secondactivity with sending parameters
-        val intent = Intent(this,SecondActivity::class.java)
+        val intent = Intent(this, SecondActivity::class.java)
         intent.putExtra("dataInteger",1)
         intent.putExtra("dataString","ganda")
         startActivityForResult(intent,idresult_secondactivity)
@@ -136,7 +137,7 @@ class MainActivity : AppCompatActivity() {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = "\"com.example.kotlin\""
+            val name = "\"com.module.kotlin\""
             val descriptionText = "Hallo this is message from menu notification"
             val importance = NotificationManager.IMPORTANCE_DEFAULT
             val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
@@ -177,7 +178,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }else{
-            toasttest("No result",this)
+            toasttest("No result", this)
         }
     }
 }

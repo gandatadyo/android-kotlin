@@ -1,4 +1,4 @@
-package com.example.kotlin
+package com.module.kotlin
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_second.*
 import android.content.Intent
-
+import com.module.kotlin.R
 
 
 class SecondActivity : AppCompatActivity() {

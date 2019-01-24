@@ -1,4 +1,4 @@
-package com.example.kotlin
+package com.module.kotlin
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +7,7 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.module.kotlin.R
 import kotlinx.android.synthetic.main.activity_volley.*
 
 class VolleyActivity : AppCompatActivity() {
@@ -29,9 +30,9 @@ class VolleyActivity : AppCompatActivity() {
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             Response.Listener<String> { response ->
-                toasttest("Response is: $response",this)
+                toasttest("Response is: $response", this)
             },
-            Response.ErrorListener { toasttest("That didn't work!",this) })
+            Response.ErrorListener { toasttest("That didn't work!", this) })
         queue.add(stringRequest)
     }
 

@@ -1,10 +1,11 @@
-package com.example.kotlin
+package com.module.kotlin
 
 import android.database.Cursor
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import com.module.kotlin.R
 import kotlinx.android.synthetic.main.activity_database.*
 
 class DatabaseActivity : AppCompatActivity() {
@@ -18,7 +19,7 @@ class DatabaseActivity : AppCompatActivity() {
         btnAdd.setOnClickListener {
             if((edtNama.text.toString() != "")&&(edtNomer.text.toString() != ""))
                 AddData() else
-                toasttest("Data must be filled",this)
+                toasttest("Data must be filled", this)
         }
 
         val mMessageClickedHandler = AdapterView.OnItemClickListener { parent, v, position, id ->
@@ -45,15 +46,15 @@ class DatabaseActivity : AppCompatActivity() {
     private fun AddData(){
         val nama = edtNama.text
         val nomor = edtNomer.text
-        val datatemp = DataSchemDBCache(nama.toString(),nomor.toString().toInt())
+        val datatemp = DataSchemDBCache(nama.toString(), nomor.toString().toInt())
         val bol = db.insertData(datatemp)
         if (bol){
             edtNama.setText("")
             edtNomer.setText("")
-            toasttest("Succesfully",this)
+            toasttest("Succesfully", this)
             ShowData()
         }else{
-            toasttest("Not Succesfully",this)
+            toasttest("Not Succesfully", this)
         }
     }
 

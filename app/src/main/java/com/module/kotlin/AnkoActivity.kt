@@ -1,7 +1,8 @@
-package com.example.kotlin
+package com.module.kotlin
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.module.kotlin.R
 
 class AnkoActivity : AppCompatActivity() {
 

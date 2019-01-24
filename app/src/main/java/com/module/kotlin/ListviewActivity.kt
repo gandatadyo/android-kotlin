@@ -1,10 +1,11 @@
-package com.example.kotlin
+package com.module.kotlin
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_listview.*
 import android.widget.ArrayAdapter
 import android.widget.AdapterView.OnItemClickListener
+import com.module.kotlin.R
 
 class ListviewActivity : AppCompatActivity() {
 
@@ -17,7 +18,7 @@ class ListviewActivity : AppCompatActivity() {
         listview.adapter = adapter
 
         val mMessageClickedHandler = OnItemClickListener { parent, v, position, id ->
-            toasttest(dataarray[position],this)
+            toasttest(dataarray[position], this)
         }
         listview.onItemClickListener = mMessageClickedHandler
     }

@@ -1,8 +1,9 @@
-package com.example.kotlin
+package com.module.kotlin
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.FragmentPagerAdapter
+import com.module.kotlin.R
 import kotlinx.android.synthetic.main.activity_tab.*
 
 class TabActivity : AppCompatActivity() {

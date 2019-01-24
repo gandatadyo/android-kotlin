@@ -1,8 +1,9 @@
-package com.example.kotlin
+package com.module.kotlin
 
 import android.content.SharedPreferences
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.module.kotlin.R
 import kotlinx.android.synthetic.main.activity_shared_preference.*
 
 class SharedPreferenceActivity : AppCompatActivity() {
@@ -12,7 +13,7 @@ class SharedPreferenceActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shared_preference)
-        prefs = this.getSharedPreferences(" com.example.kotlin",0)
+        prefs = this.getSharedPreferences(" com.module.kotlin",0)
         btnSetShared.setOnClickListener { SetSharedPreferece() }
         btnShowShared.setOnClickListener { ShowSharedPreferece() }
     }

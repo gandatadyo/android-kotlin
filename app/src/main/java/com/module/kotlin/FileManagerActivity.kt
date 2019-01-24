@@ -1,9 +1,10 @@
-package com.example.kotlin
+package com.module.kotlin
 
 import android.annotation.SuppressLint
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
+import com.module.kotlin.R
 import kotlinx.android.synthetic.main.activity_file_manager.*
 import java.io.*
 
@@ -25,7 +26,7 @@ class FileManagerActivity : AppCompatActivity() {
                 lblFileManager.text = "SampleFile.txt saved to External Storage..."
             } catch (e: IOException) {
                 e.printStackTrace()
-                toasttest(e.toString(),this)
+                toasttest(e.toString(), this)
             }
 
         }
@@ -45,7 +46,7 @@ class FileManagerActivity : AppCompatActivity() {
                 lblFileManager.text = "SampleFile.txt data retrieved from Internal Storage..."
             } catch (e: IOException) {
                 e.printStackTrace()
-                toasttest(e.toString(),this)
+                toasttest(e.toString(), this)
             }
 
         }

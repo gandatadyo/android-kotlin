@@ -1,9 +1,9 @@
-package com.example.kotlin
+package com.module.kotlin
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toast
+import com.module.kotlin.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_picasso.*
 
@@ -17,7 +17,7 @@ class PicassoActivity : AppCompatActivity() {
         btnPicasso.setOnClickListener {
             Run.after(1000) {
                 var surl = "http://i.imgur.com/DvpvklR.png"
-                toasttest(surl,this)
+                toasttest(surl, this)
                 Picasso.get().load(surl).into(imgPicasso)
             }
         }

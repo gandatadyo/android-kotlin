@@ -1,16 +1,15 @@
-package com.example.kotlin
+package com.module.kotlin
 
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.widget.Toast
 
 val DATABASE_NAME ="databaselocal"
 val TABLE_NAME="dbmdata"
 
-class DataBaseHandler(var context: Context) : SQLiteOpenHelper(context,DATABASE_NAME,null,1){
+class DataBaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,null,1){
     override fun onCreate(db: SQLiteDatabase?) {
         val createTable = "CREATE TABLE $TABLE_NAME (" +
                 "ID INTEGER PRIMARY KEY AUTOINCREMENT," +

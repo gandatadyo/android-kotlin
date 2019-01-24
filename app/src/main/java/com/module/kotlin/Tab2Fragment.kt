@@ -1,4 +1,4 @@
-package com.example.kotlin
+package com.module.kotlin
 
 
 import android.os.Bundle
@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import kotlinx.android.synthetic.main.activity_listview.*
+import com.module.kotlin.R
 import kotlinx.android.synthetic.main.fragment_tab2.view.*
 import org.jetbrains.anko.support.v4.ctx
 
