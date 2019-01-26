@@ -5,7 +5,6 @@ package com.module.kotlin
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
 import android.support.v4.content.ContextCompat.*
 import org.jetbrains.anko.*
 import org.jetbrains.anko.design.snackbar
@@ -15,6 +14,7 @@ class AnkoActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        setContentView(R.layout.activity_anko)
         MainActivityUI().setContentView(this)
     }
 }
@@ -30,7 +30,7 @@ class MainActivityUI : AnkoComponent<AnkoActivity> {
                     height = dip(250)
                 }
             val name = editText(){
-                hint = "Write"
+                hint = "Write for toast"
             }
 
             button("Toast"){
