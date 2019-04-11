@@ -22,63 +22,64 @@ class AnkoActivity : AppCompatActivity() {
 // View Activity
 class MainActivityUI : AnkoComponent<AnkoActivity> {
     override fun createView(ui: AnkoContext<AnkoActivity>) = with(ui) {
-        verticalLayout{
-            imageView(R.drawable.iconkotlin).
-                lparams(width= matchParent) {
+        scrollView {
+            verticalLayout {
+                imageView(R.drawable.iconkotlin).lparams(width = matchParent) {
                     padding = dip(20)
                     margin = dip(15)
                     height = dip(250)
                 }
-            val name = editText(){
-                hint = "Write for toast"
-            }
-
-            button("Toast"){
-                onClick {
-                    val stringname = name.text.toString()
-                    name.setText("")
-                    toast("Hallo $stringname")
+                val name = editText() {
+                    hint = "Write for toast"
                 }
-            }
 
-            button("Alert"){
-                onClick {
-                    alert("Happy Coding ?") {
-                        yesButton { toast("Yeah..") }
-                        noButton {}
-                    }.show()
-                }
-            }
-
-            button("Selector"){
-                onClick {
-                    val club = listOf("Barcelona", "Manchester United", "Real Madrid")
-                    selector("What’s football club do you love?",club) { dialogInterface, i ->
-                        toast(club[i].toString())
+                button("Toast") {
+                    onClick {
+                        val stringname = name.text.toString()
+                        name.setText("")
+                        toast("Hallo $stringname")
                     }
                 }
-            }
 
-            button("Progress Dialog"){
-                onClick {
-                    indeterminateProgressDialog("Hello! Please wait...").show()
+                button("Alert") {
+                    onClick {
+                        alert("Happy Coding ?") {
+                            yesButton { toast("Yeah..") }
+                            noButton {}
+                        }.show()
+                    }
                 }
-            }
 
-            button("Snackbar"){
-                setOnClickListener {
-                    snackbar("Hello, ${name.text}!")
+                button("Selector") {
+                    onClick {
+                        val club = listOf("Barcelona", "Manchester United", "Real Madrid")
+                        selector("What’s football club do you love?", club) { dialogInterface, i ->
+                            toast(club[i].toString())
+                        }
+                    }
                 }
-            }
 
-            button("Go to Second Activity"){
-                backgroundColor = getColor(context, R.color.colorPrimary)
-                textColor = Color.WHITE
-                setOnClickListener {
-                    startActivity<AnkoSecondaryActivity>("name" to "${name.text}")
+                button("Progress Dialog") {
+                    onClick {
+                        indeterminateProgressDialog("Hello! Please wait...").show()
+                    }
                 }
-            }.lparams(width = matchParent){
-                topMargin = dip(5)
+
+                button("Snackbar") {
+                    setOnClickListener {
+                        snackbar("Hello, ${name.text}!")
+                    }
+                }
+
+                button("Go to Second Activity") {
+                    backgroundColor = getColor(context, R.color.colorPrimary)
+                    textColor = Color.WHITE
+                    setOnClickListener {
+                        startActivity<AnkoSecondaryActivity>("name" to "${name.text}")
+                    }
+                }.lparams(width = matchParent) {
+                    topMargin = dip(5)
+                }
             }
         }
     }

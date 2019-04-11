@@ -13,8 +13,8 @@ import android.os.Build
 import android.support.v4.app.NotificationCompat
 import android.support.v4.app.NotificationManagerCompat
 import android.app.PendingIntent
+import android.net.Uri
 import android.widget.Toast
-import com.module.kotlin.R
 
 
 class MainActivity : AppCompatActivity() {
@@ -38,7 +38,10 @@ class MainActivity : AppCompatActivity() {
         btnMenuTab.setOnClickListener { startActivity(Intent(this, TabActivity::class.java)) }
         btnMenuNotification.setOnClickListener { NotificationFunc() }
         btnMenuFileManager.setOnClickListener { startActivity(Intent(this, FileManagerActivity::class.java)) }
+        btnMenuAlertDialogList.setOnClickListener { AlertDialogListFunc() }
         btnMenuNavigationDrawer.setOnClickListener {  startActivity(Intent(this, NavigationDrawerActivity::class.java)) }
+        btnMenuOpenLink.setOnClickListener {  OpenLinkFunc() }
+        btnLinkGithub.setOnClickListener { OpenLinkGithub()  }
 
         // this is event when component swipe refresh on swipe down but now can't to use
     }
@@ -103,6 +106,24 @@ class MainActivity : AppCompatActivity() {
 
         //this is function for lunch to secondactivity without sending parameters easily
         /*startActivity(Intent(this,SecondActivity::class.java))*/
+    }
+
+    private fun OpenLinkFunc(){
+        val uris = Uri.parse("https://www.google.com/")
+        val intents = Intent(Intent.ACTION_VIEW, uris)
+        val b = Bundle()
+        b.putBoolean("new_window", true)
+        intents.putExtras(b)
+        startActivity(intents)
+    }
+
+    private fun OpenLinkGithub(){
+        val uris = Uri.parse("https://github.com/gandatadyo/kotlin")
+        val intents = Intent(Intent.ACTION_VIEW, uris)
+        val b = Bundle()
+        b.putBoolean("new_window", true)
+        intents.putExtras(b)
+        startActivity(intents)
     }
 
     private fun NotificationFunc(){
