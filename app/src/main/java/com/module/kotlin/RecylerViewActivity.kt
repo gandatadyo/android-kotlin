@@ -1,10 +1,10 @@
 package com.module.kotlin
 
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +18,7 @@ class RecylerViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recyler_view)
-        recylerview.layoutManager = GridLayoutManager(this, 1)
+        recylerview.layoutManager =GridLayoutManager(this, 1)
         swipeRefreshLayout.setOnRefreshListener { ShowData() }
         ShowData()
     }

@@ -1,8 +1,10 @@
 package com.module.kotlin
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.FragmentPagerAdapter
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
 import com.module.kotlin.R
 import kotlinx.android.synthetic.main.activity_tab.*
 
@@ -19,13 +21,13 @@ class TabActivity : AppCompatActivity() {
 //        tabs_main.getTabAt(2)?.setIcon(imageResId[2])
     }
 
-    class MyPagerAdapter(fm: android.support.v4.app.FragmentManager): FragmentPagerAdapter(fm){
+    class MyPagerAdapter(fm: FragmentManager): FragmentPagerAdapter(fm){
         private val pages = listOf(
             Tab1Fragment(),
             Tab2Fragment(),
             Tab3Fragment()
         )
-        override fun getItem(position: Int): android.support.v4.app.Fragment? {
+        override fun getItem(position: Int): Fragment {
             return pages[position]
         }
         override fun getCount(): Int {

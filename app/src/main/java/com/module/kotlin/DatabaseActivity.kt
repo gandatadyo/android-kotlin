@@ -1,7 +1,7 @@
 package com.module.kotlin
 
 import android.database.Cursor
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -18,8 +18,7 @@ class DatabaseActivity : AppCompatActivity() {
         setContentView(R.layout.activity_database)
         btnAdd.setOnClickListener {
             if((edtNama.text.toString() != "")&&(edtNomer.text.toString() != ""))
-                AddData() else
-                toasttest("Data must be filled", this)
+                AddData() else toasttest("Data must be filled", this)
         }
 
         val mMessageClickedHandler = AdapterView.OnItemClickListener { parent, v, position, id ->

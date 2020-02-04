@@ -10,7 +10,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/textView" android:layout_margin="5dp"
             android:textStyle="bold" android:textColor="@android:color/black"/>
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent" android:fillViewport="true">
             <LinearLayout android:layout_width="match_parent"
@@ -99,6 +99,35 @@
                         android:text="Open link Url"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:id="@+id/btnMenuOpenLink"/>
+                <Button
+                        android:text="Search View"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/btnSearchView"/>
+                <Button
+                        android:text="Job Service Start"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/btnJobServiceStart"/>
+                <Button
+                        android:text="Job Service Stop"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/btnJobServiceStop"/>
+                <Button
+                        android:text="Alaram"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/btnAlarm"/>
+                <Button
+                        android:text="Bottom Sheet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/btnBotomSheet"/>
+                <Button
+                        android:text="Send Message"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/btnMessage"/>
+
+                <Button
+                        android:text="Broadcastreceive and SMS Receive"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/btnBroadcastReceive"/>
             </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

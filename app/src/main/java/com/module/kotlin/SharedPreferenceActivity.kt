@@ -1,7 +1,7 @@
 package com.module.kotlin
 
 import android.content.SharedPreferences
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.module.kotlin.R
 import kotlinx.android.synthetic.main.activity_shared_preference.*
