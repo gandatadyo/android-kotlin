@@ -14,10 +14,13 @@ import android.app.PendingIntent
 import android.app.job.JobInfo
 import android.app.job.JobScheduler
 import android.content.*
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.net.Uri
 import android.widget.Toast
 
 
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
     private var pgdialog: ProgressDialog? = null
     private val idresult_secondactivity = 0
@@ -52,6 +55,7 @@ class MainActivity : AppCompatActivity() {
         btnBotomSheet.setOnClickListener { startActivity(Intent(this, BottomSheetActivity::class.java)) }
         btnMessage.setOnClickListener { startActivity(Intent(this, SendMessageActivity::class.java)) }
         btnBroadcastReceive.setOnClickListener { startActivity(Intent(this, BroadcastActivity::class.java)) }
+        btnCheckInternet.setOnClickListener { CheckConnection() }
 
 
         // this is event when component swipe refresh on swipe down but now can't to use
@@ -184,6 +188,21 @@ class MainActivity : AppCompatActivity() {
             val notificationId = 1234
             notify(notificationId, mBuilder.build())
         }
+    }
+
+    private fun CheckConnection(){
+        if(isNetworkAvailable((this))){
+            Toast.makeText(this,"online",Toast.LENGTH_SHORT).show()
+        }else{
+            Toast.makeText(this,"offline",Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    fun isNetworkAvailable(context: Context): Boolean {
+        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        var activeNetworkInfo: NetworkInfo? = null
+        activeNetworkInfo = cm.activeNetworkInfo
+        return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting
     }
 
     private fun AlertDialogListFunc(){

@@ -128,6 +128,11 @@
                         android:text="Broadcastreceive and SMS Receive"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:id="@+id/btnBroadcastReceive"/>
+
+                <Button
+                        android:text="Check Internet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/btnCheckInternet"/>
             </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </LinearLayout>
