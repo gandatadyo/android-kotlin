@@ -17,6 +17,8 @@ import android.content.*
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.net.Uri
+import android.view.Window
+import android.widget.TextView
 import android.widget.Toast
 
 
@@ -57,8 +59,28 @@ class MainActivity : AppCompatActivity() {
         btnBroadcastReceive.setOnClickListener { startActivity(Intent(this, BroadcastActivity::class.java)) }
         btnCheckInternet.setOnClickListener { CheckConnection() }
 
+        btnCustomDialog.setOnClickListener { CustomDialog() }
+
 
         // this is event when component swipe refresh on swipe down but now can't to use
+    }
+
+    private fun CustomDialog() {
+        val dialog = Dialog(this)
+        dialog .requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog .setCancelable(false)
+        dialog .setContentView(R.layout.activity_customdialog)
+        val body = dialog .findViewById(R.id.lblCustom_Dialog) as TextView
+        body.text = "this is custom dialog"
+//        val yesBtn = dialog .findViewById(R.id.yesBtn) as Button
+//        val noBtn = dialog .findViewById(R.id.noBtn) as TextView
+//        yesBtn.setOnClickListener {
+//            dialog .dismiss()
+//        }
+//        noBtn.setOnClickListener { dialog .dismiss() }
+        dialog.setCancelable(true)
+        dialog .show()
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
