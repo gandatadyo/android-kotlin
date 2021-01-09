@@ -103,14 +103,7 @@
                         android:text="Search View"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:id="@+id/btnSearchView"/>
-                <Button
-                        android:text="Job Service Start"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/btnJobServiceStart"/>
-                <Button
-                        android:text="Job Service Stop"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/btnJobServiceStop"/>
+
                 <Button
                         android:text="Alaram"
                         android:layout_width="match_parent"
@@ -138,6 +131,11 @@
                         android:text="Custom Dialog"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:id="@+id/btnCustomDialog"/>
+
+                <Button
+                        android:text="Retrofit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/btnRetrfit"/>
             </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </LinearLayout>

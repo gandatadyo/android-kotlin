@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.module.kotlin.R
 import kotlinx.android.synthetic.main.activity_tab.*
 
 class TabActivity : AppCompatActivity() {

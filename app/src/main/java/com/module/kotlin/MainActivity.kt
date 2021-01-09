@@ -1,37 +1,34 @@
 package com.module.kotlin
 
 import android.app.*
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import kotlinx.android.synthetic.main.activity_main.*
-import android.app.NotificationManager
-import android.os.Build
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
-import android.app.PendingIntent
-import android.app.job.JobInfo
-import android.app.job.JobScheduler
-import android.content.*
+import android.content.Context
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.net.Uri
+import android.os.Build
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.Window
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import kotlinx.android.synthetic.main.activity_main.*
+import okhttp3.OkHttpClient
 
 
 @Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
     private var pgdialog: ProgressDialog? = null
     private val idresult_secondactivity = 0
-    private val JOB_ID = 24
-    private lateinit var jobinfo :JobInfo
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         btnMenuProgressDialog.setOnClickListener { ProgressDialog() }
         btnMenuAlertDialog.setOnClickListener { AlertDialogFunc() }
         btnMenuIntent.setOnClickListener { IntentFunc() }
@@ -51,18 +48,21 @@ class MainActivity : AppCompatActivity() {
         btnMenuOpenLink.setOnClickListener {  OpenLinkFunc() }
         btnLinkGithub.setOnClickListener { OpenLinkGithub()  }
         btnSearchView.setOnClickListener { startActivity(Intent(this, SearchViewActivity::class.java)) }
-        btnJobServiceStart.setOnClickListener { startJob() }
-        btnJobServiceStop.setOnClickListener { stopJob() }
+
         btnAlarm.setOnClickListener { startActivity(Intent(this, AlarmActivity::class.java)) }
         btnBotomSheet.setOnClickListener { startActivity(Intent(this, BottomSheetActivity::class.java)) }
         btnMessage.setOnClickListener { startActivity(Intent(this, SendMessageActivity::class.java)) }
         btnBroadcastReceive.setOnClickListener { startActivity(Intent(this, BroadcastActivity::class.java)) }
         btnCheckInternet.setOnClickListener { CheckConnection() }
-
         btnCustomDialog.setOnClickListener { CustomDialog() }
-
+        btnRetrfit.setOnClickListener { CallData() }
 
         // this is event when component swipe refresh on swipe down but now can't to use
+    }
+
+    private fun CallData(){
+
+
     }
 
     private fun CustomDialog() {
@@ -119,11 +119,11 @@ class MainActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setMessage("Alert ?")
         builder.setCancelable(false)
-        builder.setPositiveButton("Yes") { dialog, which ->
+        builder.setPositiveButton("Yes") { dialog, _ ->
             dialog.dismiss()
             toasttest("hallo alert", this)
         }
-        builder.setNegativeButton("No") { dialog, which ->
+        builder.setNegativeButton("No") { dialog, _ ->
             dialog.dismiss()
         }
         val dialog: AlertDialog = builder.create()
@@ -233,7 +233,7 @@ class MainActivity : AppCompatActivity() {
         with(builder)
         {
             setTitle("List of Items")
-            setItems(items) { dialog, which ->
+            setItems(items) { _, which ->
                 Toast.makeText(applicationContext, items[which] + " is clicked", Toast.LENGTH_SHORT).show()
             }
             show()
@@ -253,43 +253,6 @@ class MainActivity : AppCompatActivity() {
         }else{
             toasttest("No result", this)
         }
-    }
-
-    private fun startJob() {
-        if (isJobRunning(this)) {
-            Toast.makeText(this, "Job Service is already scheduled", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        val cn = ComponentName(this, MyJobSceduler::class.java)
-        val builder = JobInfo.Builder(JOB_ID, cn)
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            builder.setPeriodic(900000) //15 menit
-        } else {
-            builder.setPeriodic(180000) //3 menit
-        }
-        jobinfo = builder.build()
-        val jobsceduler = getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
-        jobsceduler.schedule(jobinfo)
-        Toast.makeText(this, "Job Service started", Toast.LENGTH_SHORT).show()
-    }
-
-    private fun stopJob() {
-        val jobsceduler = getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
-        jobsceduler.cancel(JOB_ID)
-        Toast.makeText(this, "Job Service canceled", Toast.LENGTH_SHORT).show()
-    }
-
-    private fun isJobRunning(context: Context): Boolean {
-        var isScheduled = false
-        val jobsceduler = context.getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
-        for (jobInfo in jobsceduler.allPendingJobs) {
-            if (jobInfo.id == JOB_ID) {
-                isScheduled = true
-                break
-            }
-        }
-        return isScheduled
     }
 
 }
